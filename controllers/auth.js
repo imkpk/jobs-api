@@ -26,7 +26,7 @@ const register = async (req, res) => {
   // const bdy = await req.body;
   const user = await User.create({ ...req.body });
   const token = user.createJwt();
-  console.log(token);
+  // console.log(token);
   res.status(stc.CREATED).json({
     user: { name: user.name },
     token,

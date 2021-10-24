@@ -7,10 +7,7 @@ const getAllJobs = async (req, res) => {
   if (!jobs) {
     throw new BadRequestError(`no jobs found`);
   }
-  res.status(stc.OK).json({
-    jobs,
-    count: jobs.length,
-  });
+  res.status(stc.OK).json({ jobs, count: jobs.length });
 };
 
 const getJob = async (req, res) => {
@@ -30,7 +27,7 @@ const getJob = async (req, res) => {
 
 const createJob = async (req, res) => {
   req.body.createdBy = req.user.userId;
-  console.log(req.user);
+  // console.log(req.user);
   const job = await Job.create(req.body);
   res.status(stc.CREATED).json({ job });
 };
